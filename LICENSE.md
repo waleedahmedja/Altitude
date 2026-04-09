@@ -1,52 +1,98 @@
-# License
+# Altitude License v1.0
 
-**MIT License**
+**Copyright (c) 2026 Waleed Ahmed**
 
-Copyright (c) 2026 Waleed Ahmed
-
----
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-**THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.**
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to use, study, modify, and distribute the Software, subject to the following conditions:
 
 ---
 
-## What This Means in Plain Language
+### 1. Attribution
 
-You can use this code for anything — personal projects, commercial products, forks, modifications. You don't need to ask permission.
+Any use, modification, or distribution of this Software — in original or modified form — must provide clear and prominent credit to the original author, **Waleed Ahmed**, and include a reference to the original project repository:
 
-The only requirement: if you distribute this software or something built on it, include the copyright notice and this license text.
+> [https://github.com/waleedahmedja/altitude](https://github.com/waleedahmedja/altitude)
 
-We don't guarantee the software works perfectly. We're not liable if it doesn't.
-
-That's it.
+Credit must appear in a location reasonably visible to users of the distributed work — for example, in an About screen, a README, or an equivalent document. Burying it where nobody reads does not satisfy this condition.
 
 ---
 
-## Third-Party Licenses
+### 2. Open modifications
 
-Altitude is built on the shoulders of excellent open-source work. The following dependencies carry their own licenses:
+Any publicly distributed modifications or derivative works must be made publicly available under this same license or a compatible open license. You may not take this work, improve it, and distribute a closed-source version.
 
-| Dependency | License | Link |
-|---|---|---|
-| Jetpack Compose | Apache 2.0 | [source](https://github.com/androidx/androidx) |
-| Hilt | Apache 2.0 | [source](https://github.com/google/dagger) |
-| Retrofit | Apache 2.0 | [source](https://github.com/square/retrofit) |
-| OkHttp | Apache 2.0 | [source](https://github.com/square/okhttp) |
-| Room | Apache 2.0 | [source](https://github.com/androidx/androidx) |
-| Jetpack Glance | Apache 2.0 | [source](https://github.com/androidx/androidx) |
-| WorkManager | Apache 2.0 | [source](https://github.com/androidx/androidx) |
-| MapLibre Android | BSD 2-Clause | [source](https://github.com/maplibre/maplibre-gl-native) |
-| OpenStreetMap | ODbL 1.0 | [source](https://www.openstreetmap.org/copyright) |
-| Kotlin | Apache 2.0 | [source](https://github.com/JetBrains/kotlin) |
+Private modifications for personal use are unrestricted. You are free to build on this for yourself without publishing your changes.
+
+---
+
+### 3. No ownership transfer
+
+This license grants permission to use and build upon the Software. It does not transfer ownership, authorship, or brand identity. Waleed Ahmed retains all rights to the Altitude name, the waleedahmedja mark, and the original project identity.
+
+Derivative works must be clearly distinguished from the original. You may not name your derivative "Altitude" or imply official association with this project.
+
+---
+
+### 4. No commercial redistribution without attribution
+
+You may not sell, sublicense, or commercially redistribute this Software — or any substantial portion of it — without clear attribution and a reference to the original source. Selling a reskinned version of Altitude without credit is a violation of this license.
+
+---
+
+### 5. No warranty
+
+The Software is provided **"as is"**, without warranty of any kind, express or implied — including but not limited to the warranties of merchantability, fitness for a particular purpose, and non-infringement. The entire risk as to the quality and performance of the Software is with you.
+
+---
+
+### 6. No liability
+
+In no event shall the author or copyright holders be liable for any claim, damages, or other liability — whether in an action of contract, tort, or otherwise — arising from, out of, or in connection with the Software or the use or other dealings in the Software.
+
+This includes, without limitation, any loss arising from reliance on flight data displayed by the Software. Altitude is not an official aviation source. Verify critical information through official channels.
+
+---
+
+### 7. Ethical use
+
+This Software may not be used for:
+
+- Surveillance or monitoring of individuals without their informed consent
+- Any purpose that violates the privacy, autonomy, or dignity of others
+
+Altitude is built for passengers. Build something you're proud of. Build something that respects the people who use it.
+
+---
+
+### Summary (non-legally binding)
+
+> 🟢 **Use it.** Personal use is unrestricted.
+> 🟢 **Learn from it.** Study the architecture, the data layer, the widget system.
+> ✍️ **Credit the author** if you distribute it or build on it publicly.
+> 🌐 **Keep it open.** Public derivatives stay public.
+> 🚫 **Don't sell it without attribution.**
+> 🛡️ **The original remains the original.** The name and identity stay with the author.
+
+---
+
+### Third-party licenses
+
+Altitude is built on excellent open-source work. The following dependencies carry their own licenses:
+
+| Dependency | License |
+|---|---|
+| Jetpack Compose | Apache 2.0 |
+| Hilt | Apache 2.0 |
+| Retrofit | Apache 2.0 |
+| OkHttp | Apache 2.0 |
+| Room | Apache 2.0 |
+| Jetpack Glance | Apache 2.0 |
+| WorkManager | Apache 2.0 |
+| MapLibre Android | BSD 2-Clause |
+| OpenStreetMap | ODbL 1.0 |
+| Kotlin | Apache 2.0 |
 
 Data provided by OpenSky Network, AviationStack, aviationweather.gov, and wttr.in is subject to their respective terms and licenses.
 
 ---
-
-*If you build something with Altitude's code, we'd genuinely love to know. Not required — just curious.*
 
 — **waleedahmedja**
