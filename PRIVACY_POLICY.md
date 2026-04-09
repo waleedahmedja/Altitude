@@ -1,123 +1,107 @@
 # Privacy Policy
 
-**Altitude — Live Flight Tracker**
+**Effective date:** April 2026
+**Last updated:** April 2026
 
-*Last updated: April 2026*
-
----
-
-We built Altitude because we care about getting things right. That extends to your data.
-
-This policy is written to be read — not buried. No legalese walls, no buried opt-outs. If something isn't clear, open an issue and we'll fix the language.
+Altitude is a flight tracking app designed for the passenger. This policy explains how information is — and is not — handled.
 
 ---
 
-## The Short Version
+## Short Version
 
-- We don't require an account
-- We don't sell your data
-- We don't run ads
-- The only data that leaves your device is what's needed to fetch flight information
-- Your flight history lives on your device
-
-That's the honest summary. The full detail follows.
+Altitude uses the flight numbers you search to fetch data from aviation providers. That's it. Nothing is sold. Nothing is shared with advertisers. There are no Altitude servers. Everything that isn't sent to a flight data provider stays on your device.
 
 ---
 
-## What We Collect
+## 1. What Altitude collects
 
-### What We Don't Collect
-- Your name
-- Your email address
-- Your phone number
-- Payment information
-- Device identifiers tied to you personally
+**Flight searches**
 
-### What the App Uses Locally (Stays on Your Device)
-- **Flights you add** — stored in a local Room database on your device only
-- **Your alert preferences** — stored in local SharedPreferences
-- **Cached flight data** — stored temporarily so the app works with poor connectivity
-- **App theme preference** — light, dark, or system
+When you search for or track a flight, Altitude sends the flight number and a timestamp to third-party aviation data providers. These requests contain no personal identifiers — they are functionally anonymous, the same as any browser search.
 
-### What Leaves Your Device (To Fetch Flight Data)
-When you search for or track a flight, the app makes requests to third-party aviation data providers. These requests contain:
-- The flight number or route you searched
-- A timestamp
+**Nothing else**
 
-These requests do not contain your identity. They are functionally anonymous — the same request any browser makes when you search for flight information.
+Altitude does not collect:
 
-**Third-party services we use:**
-- [OpenSky Network](https://opensky-network.org/about/privacy) — live aircraft position data
-- [AviationStack](https://aviationstack.com/privacy) — flight status and schedule data
-- [aviationweather.gov](https://www.weather.gov/privacy) — weather and NOTAM data
-- [wttr.in](https://wttr.in/:help) — plain language weather
-
-Each of these services has its own privacy policy, linked above. We encourage you to read them.
-
-### Anonymous Analytics (Optional, Future)
-If we introduce analytics in a future version, it will be:
-- Explicitly opt-in
-- Limited to aggregate, non-identifying usage patterns (e.g. "how many users tap the weather overlay")
-- Clearly documented in an update to this policy
-
-We will never collect analytics silently.
+- Your name or any personal identifier
+- Contact information
+- Usage analytics or crash reports
+- Advertising identifiers
+- Location data (V1 does not request location permission)
+- Biometric data
+- Browsing history
 
 ---
 
-## Location Data
+## 2. How your data is used
 
-Altitude does **not** request location permissions in V1.
+Flight numbers serve one purpose: fetching flight status and position data.
 
-If a future version uses location (for example, to detect when you're at an airport), it will:
-- Require explicit permission granted by you
-- Be used only while the app is open
-- Never be stored beyond the session
-- Never be shared with third parties
+Requests go to the following services, each with their own privacy policy:
 
----
+| Service | Purpose | Data sent |
+|---|---|---|
+| OpenSky Network | Live aircraft position | Flight identifier |
+| AviationStack | Flight status, schedules | Flight identifier |
+| aviationweather.gov | Weather, METAR, NOTAM | Airport code |
+| wttr.in | Plain language weather | Airport code |
 
-## Notifications
-
-If you grant notification permission, Altitude uses it to send flight status alerts — gate changes, delays, boarding calls, and landing confirmations.
-
-We don't use notification access for anything else. We don't send marketing notifications. We don't analyse what alerts you dismiss.
+**Altitude has no backend.** There is no Altitude server receiving, storing, or processing your data. The only outbound network requests are those described above.
 
 ---
 
-## Data Storage and Security
+## 3. Local storage
 
-All your personal data — flights, preferences, history — is stored locally on your device using Android's standard storage APIs. It is subject to your device's existing security (screen lock, encryption, etc.).
+All personal data is stored locally on your device using Android's standard storage APIs:
 
-We don't operate servers that store your personal data. There is no Altitude account. There is no Altitude cloud sync in V1.
+- Flights you've added — stored in a local Room database
+- Alert preferences — stored in SharedPreferences
+- Cached flight data — stored temporarily for poor-connectivity use
+- Theme preference — light, dark, or system
 
----
-
-## Children's Privacy
-
-Altitude is not directed at children under 13. We don't knowingly collect information from children. If you believe a child has provided information through the app, please contact us and we will address it promptly.
-
----
-
-## Changes to This Policy
-
-If we make meaningful changes to this policy, we will:
-- Update the "Last updated" date at the top
-- Post a clear summary of what changed in the app's release notes
-- Not retroactively apply new data practices to data collected under the old policy
-
-Continuing to use the app after a policy update constitutes acceptance of the revised policy.
+Uninstalling the app removes all of this permanently. There is no cloud sync in V1.
 
 ---
 
-## Contact
+## 4. Location
 
-Questions, concerns, or just want to tell us something's unclear?
+Altitude does not request location permissions in V1.
 
-Open an issue on GitHub or reach out directly:
+If a future version uses location — for example, to detect when you're at an airport — it will require explicit permission, be used only while the app is open, never be stored beyond the session, and never be shared with third parties.
+
+---
+
+## 5. Notifications
+
+If you grant notification permission, Altitude uses it to send flight status alerts: gate changes, delays, boarding calls, and landing confirmations. Nothing else. No marketing. No analytics on what you dismiss.
+
+---
+
+## 6. Analytics
+
+There are no analytics in V1. If analytics are introduced in a future version, they will be explicitly opt-in, limited to aggregate non-identifying patterns, and clearly documented in an update to this policy. Silent collection will never happen.
+
+---
+
+## 7. Children's privacy
+
+Altitude does not knowingly collect data from anyone. Since no personal data is collected from any user, no special processing applies to users of any age.
+
+---
+
+## 8. Changes
+
+This policy may be updated to reflect new features or legal requirements. The date at the top of this document will reflect any changes. Significant changes will be noted in the app's release notes.
+
+---
+
+## 9. Contact
+
+Questions about this policy can be raised as a GitHub Issue:
 [github.com/waleedahmedja/altitude](https://github.com/waleedahmedja/altitude)
 
 ---
 
-*We're independent developers, not a corporation with a legal team. This policy reflects how we actually operate — not how we wish we could get away with operating.*
+*Altitude is built on craft and user trust. Your data is yours.*
 
 — **waleedahmedja**
