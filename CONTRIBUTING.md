@@ -1,102 +1,80 @@
 # Contributing to Altitude
 
-First — thank you. Altitude is built on the belief that good software is made by people who genuinely care. If you're here, you probably do.
+Altitude is a flight tracker with a clear design philosophy and a tight scope.
 
-This document tells you how to contribute effectively. Read it once before opening your first PR. It'll save both of us time.
+Before contributing, understand what the project is — and what it refuses to be.
 
 ---
 
-## Before You Start
+## Read this first
 
-### Check What's Already There
-Before building a feature or fixing a bug, search open issues and PRs. Someone might already be working on it. Duplicate effort is nobody's favourite thing.
+Altitude is not a community project in the sense of "the more the merrier." The design language, architecture, and philosophy are specific. Contributions that add noise, complexity, or features outside the roadmap won't be merged — regardless of how well they're written.
 
-### Open an Issue First (for New Features)
-If you want to add something significant, open an issue and describe what you're thinking before writing code. This lets us discuss the approach, confirm it fits the project's direction, and make sure your time is well spent.
+If you're unsure whether your contribution fits, open a discussion before writing a single line of code. A five-minute conversation saves both of us time.
 
 Bug fixes and documentation improvements can go straight to a PR — no issue needed.
 
 ---
 
-## The Project's Design Philosophy
+## Philosophy
 
-Altitude has a point of view. Contributions that fit it will be welcomed. Contributions that fight it will be declined — respectfully, with an explanation.
+Altitude must remain:
 
-**The core rules:**
+- **Clean** — the surface never accumulates noise for edge-case users
+- **Honest** — no dark patterns, no manipulative UI, no undocumented data collection
+- **Intentional** — nothing exists by accident
+- **Dual-mode** — light and dark are both first-class; every change must look right in both
 
-- **Surface is always clean.** Features that add noise to the main UI for edge-case users don't belong in the default experience. Find the right depth for your addition.
-- **Both light and dark modes are first-class.** Every UI change must look intentional in both modes. Test both before submitting.
-- **Free, no ads, no dark patterns.** We won't accept contributions that introduce advertising, manipulative UI, or data collection beyond what's documented in the Privacy Policy.
-- **The easter eggs are sacred.** The Kollsman window, the VOR spinner, the orange — these details have meaning. Don't remove them. Don't make them louder.
+**Non-negotiable — these will never be added:**
+- Advertising or sponsored content of any kind
+- Analytics without explicit opt-in
+- Features that clutter the main passenger experience
+- Anything that removes or weakens the easter eggs — the Kollsman window, the VOR spinner, the orange
 
-If you're unsure whether your contribution fits, ask in an issue first. There are no wrong questions.
-
----
-
-## Development Setup
-
-### Requirements
-- Android Studio Hedgehog or later
-- JDK 17+
-- Android SDK API 26+
-- A device or emulator for testing
-
-### Getting the Code
-```bash
-git clone https://github.com/yourusername/altitude.git
-cd altitude
-```
-
-### API Keys
-Create `local.properties` in the root directory:
-```properties
-AVIATIONSTACK_API_KEY=your_key_here
-```
-
-OpenSky Network, aviationweather.gov, and wttr.in require no keys.
-
-### Running the App
-Open in Android Studio, sync Gradle, and run on a device or emulator with API 26+.
+If your contribution adds complexity, it must add clarity by a greater margin. That's the bar.
 
 ---
 
-## Making a Contribution
+## Architecture rules
 
-### 1. Fork and Branch
-```bash
-git checkout -b feature/your-feature-name
-# or
-git checkout -b fix/what-youre-fixing
-```
+Follow the established patterns. Do not introduce new ones without prior discussion.
 
-Use descriptive branch names. `fix/boarding-notification-timing` is better than `fix/bug`.
+**Core rules:**
+- **MVVM strictly** — no business logic in Composables, no UI logic in Repositories
+- **StateFlow throughout** — UI reads state, never mutates ViewModel state directly
+- **Hilt for DI** — no manual dependency wiring
+- **Kotlin only** — no Java files
+- **Jetpack Compose only** — no XML layouts
 
-### 2. Write Your Code
+**New dependencies:**
+Every new dependency requires justification in the PR description. If the result can be achieved with what's already in the project, that approach wins. Large, proprietary, or privacy-concerning dependencies won't be accepted.
 
-Follow the existing architecture: **MVVM + StateFlow + Hilt**. New features belong in the appropriate layer. Don't put business logic in a Composable. Don't put UI logic in a Repository.
+---
 
-Code style: the project follows standard Kotlin conventions. Run `ktlint` before committing.
+## How to contribute
+
+1. **Fork** the repository
+2. **Open an issue** if your change is a new feature — confirm it fits before building it
+3. **Create a branch** — `fix/what-it-fixes` or `feature/what-it-adds`
+4. **Keep changes focused** — one concern per PR. Don't combine a bug fix with a refactor.
+5. **Run ktlint** before committing
 
 ```bash
 ./gradlew ktlintCheck
 ./gradlew ktlintFormat
 ```
 
-### 3. Write or Update Tests
-- New features should include unit tests for the ViewModel and repository layer
-- Bug fixes should include a test that would have caught the bug
-- UI tests are welcomed but not required for every change
+6. **Write tests** — new features need unit tests for the ViewModel and repository layer; bug fixes need a test that would have caught the bug
+7. **Open a Pull Request** including:
+   - A clear description of what changed and why
+   - Screenshots or screen recording for UI changes
+   - Confirmation that both light and dark modes look correct
 
-```bash
-./gradlew test
-./gradlew connectedAndroidTest
-```
+---
 
-### 4. Test Both Modes
-Open the app in light mode. Open the app in dark mode. Make sure your change looks right in both. Screenshots in the PR help.
+## Commit style
 
-### 5. Commit With Intent
-Write commit messages that explain *why*, not just *what*:
+Follow [Conventional Commits](https://www.conventionalcommits.org/). Write messages that explain *why*, not just *what*:
 
 ```
 # Good
@@ -106,71 +84,75 @@ fix: delay notification now fires before boarding call, not after
 fix: notifications
 ```
 
-We follow [Conventional Commits](https://www.conventionalcommits.org/):
-- `feat:` — new feature
-- `fix:` — bug fix
-- `docs:` — documentation changes
-- `refactor:` — code restructuring without behaviour change
-- `test:` — adding or updating tests
-- `chore:` — dependency updates, config changes
-
-### 6. Open a Pull Request
-
-When your PR is ready:
-- Fill in the PR template completely
-- Link the related issue if there is one
-- Include screenshots or a screen recording for UI changes
-- Mark it as a Draft if it's not ready for review
+Prefixes: `feat:` `fix:` `docs:` `refactor:` `test:` `chore:`
 
 ---
 
-## PR Review Process
+## Before you submit
 
-We review PRs with care, not speed. A thorough review is more valuable than a fast one.
+Verify every item:
 
-What we look for:
-- Does it fit the project's philosophy?
-- Is the code clean and maintainable?
-- Are edge cases handled?
-- Does it work in both light and dark modes?
-- Does it break anything?
-
-We'll give honest feedback. If we request changes, it's not rejection — it's collaboration.
-
-If a PR isn't going to be merged, we'll say so clearly and explain why. We won't leave contributions hanging.
+- [ ] Tested on a real device or emulator with API 26+
+- [ ] Light mode: nothing broken or misaligned
+- [ ] Dark mode: nothing broken or misaligned
+- [ ] No business logic introduced into Composables
+- [ ] No new dependencies without justification in the PR description
+- [ ] No new lint warnings
+- [ ] ktlint passes
+- [ ] Tests written or updated where applicable
+- [ ] Easter eggs untouched
 
 ---
 
-## What We're Looking For
+## What we're looking for
 
-### High Priority
+**High priority:**
 - Bug fixes with reproduced test cases
 - Performance improvements with measured benchmarks
 - Accessibility improvements
 - Documentation improvements
 
-### Welcome
-- New features that fit the V1 roadmap (see README)
+**Welcome:**
+- New features that fit the V1 roadmap
 - UI polish that respects the design system
 - Additional unit test coverage
-- Kotlin/Compose best practice improvements
 
-### Unlikely to Be Merged
+**Unlikely to be merged:**
 - Features that belong in V2 without a V1 version to start from
 - UI changes that add clutter to the main passenger experience
-- Dependencies that are large, proprietary, or privacy-concerning
 - Anything that adds tracking, analytics (without opt-in), or ads
+
+---
+
+## Bug reports
+
+Open a GitHub Issue and include:
+
+- Device model and Android version
+- Whether it occurs in light mode, dark mode, or both
+- Steps to reproduce — specific enough that someone else can follow them
+- Expected behaviour vs actual behaviour
+- Logcat output if relevant — redact anything personal before pasting
+
+---
+
+## Feature requests
+
+Open a Discussion, not an Issue. Issues are for confirmed bugs and accepted feature work only.
+
+Read the roadmap in the README before opening a feature request. If what you're asking for belongs in V2, note that — it might still be worth discussing.
 
 ---
 
 ## Questions
 
-Something unclear? Open a GitHub Discussion or tag the maintainers in an issue.
-
-We appreciate everyone who takes the time to contribute — whether it's a one-line fix or a full feature. It all matters.
+Open a Discussion. The project has a clear philosophy and a maintainer who is happy to talk through whether something fits — but not through Issues, which are tracked for actionable work.
 
 ---
 
-*Altitude is a project built by people who care about craft. We hope that shows, and we hope you'll add to it.*
+Altitude is built by people who care about craft.
+Contributions should be too.
 
-— waleedahmedja
+---
+
+— **waleedahmedja**
