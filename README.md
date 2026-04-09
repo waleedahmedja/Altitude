@@ -1,73 +1,62 @@
 <div align="center">
 
-<br/>
-
 # A L T I T U D E
 
-**The Android flight tracker built for the passenger who cares.**
+**Not your average flight tracker.**
 
-[![License](https://img.shields.io/badge/license-MIT-orange.svg?style=flat-square)](LICENSE.md)
-[![Platform](https://img.shields.io/badge/platform-Android-green.svg?style=flat-square)](https://android.com)
-[![API](https://img.shields.io/badge/API-26%2B-brightgreen.svg?style=flat-square)](https://android-arsenal.com/api?level=26)
-[![Kotlin](https://img.shields.io/badge/Kotlin-2.0-blue.svg?style=flat-square)](https://kotlinlang.org)
-[![Status](https://img.shields.io/badge/status-In%20Development-orange.svg?style=flat-square)]()
+Built with Kotlin and Jetpack Compose. Designed for the passenger.
 
+<br/>
+
+[![Kotlin](https://img.shields.io/badge/Kotlin-2.0-7F52FF?style=flat-square&logo=kotlin&logoColor=white)](https://kotlinlang.org)
+[![Compose](https://img.shields.io/badge/Jetpack_Compose-latest-4285F4?style=flat-square&logo=jetpackcompose&logoColor=white)](https://developer.android.com/jetpack/compose)
+![API](https://img.shields.io/badge/Min_SDK-26-green?style=flat-square)
+![License](https://img.shields.io/badge/License-Custom-orange?style=flat-square)
+![Status](https://img.shields.io/badge/Status-In_Development-orange?style=flat-square)
+
+<br/>
 
 </div>
 
 ---
 
-## What is Altitude?
+## The Idea
 
-Most flight apps are built for plane spotters. Altitude is built for the person on the plane.
+Most flight apps are built for plane spotters.
 
-One flight card. Everything you need. Nothing you don't. Gate changes before your airline tells you. A live map that looks like it came from a design studio, not a GPS app. A personal flight log that gets richer every time you fly.
+Altitude fills a gap that still exists on Android — a flight tracker built for the person actually on the plane. One card. Everything you need. Nothing you don't. Gate changes before your airline tells you. A live map that looks like it came from a design studio, not a GPS app. A personal flight log that gets richer every time you fly.
 
 And for those who look closely — a few things that only make sense if you already know.
 
 ---
 
-## Features
+## What It Does
 
-### For the Passenger
-- **Flight Card** — status, gate, terminal, aircraft, boarding time. One glance, you're informed
-- **Smart Alerts** — gate changes, delays, boarding calls. Faster than your airline app
-- **Live Map** — great circle route, real-time aircraft position, altitude profile strip
-- **"Who's Landing?" Mode** — track someone else's arrival. Built for the person waiting at arrivals
-- **Cancelled State** — when a flight dies, the app doesn't. See next available flights instantly
-
-### For the Traveller
-- **Flight Log** — every flight you've ever tracked, archived and searchable
-- **Passport Map** — a personal world map with arc lines for every route you've flown
-- **Home Screen Widget** — your next flight's status without opening the app
+| Feature | Description |
+|---|---|
+| **Flight Card** | Status, gate, terminal, aircraft, boarding time. One glance, you're informed |
+| **Smart Alerts** | Gate changes, delays, boarding calls. Faster than your airline app |
+| **Live Map** | Great circle route, real-time aircraft position, altitude profile strip |
+| **"Who's Landing?" Mode** | Track someone else's arrival. Built for the person waiting at arrivals |
+| **Cancelled State** | When a flight dies, the app doesn't. See next available flights instantly |
+| **Flight Log** | Every flight you've ever tracked, archived and searchable |
+| **Passport Map** | A personal world map with arc lines for every route you've flown |
+| **Home Screen Widget** | Your next flight's status without opening the app |
 
 ---
 
-## Tech Stack
+## What It Doesn't Do
 
-| Layer | Technology |
-|---|---|
-| Language | Kotlin 2.0 |
-| UI | Jetpack Compose |
-| Architecture | MVVM + StateFlow |
-| DI | Hilt |
-| Database | Room |
-| Networking | Retrofit + OkHttp |
-| Maps | MapLibre Android SDK |
-| Widget | Jetpack Glance |
-| Background | WorkManager |
-| Auth | Firebase Anonymous Auth |
-
-### Data Sources (All Free)
-- **OpenSky Network** — live aircraft position, heading, altitude, speed
-- **AviationStack** — flight status, schedules, delay information
-- **aviationweather.gov** — METAR, TAF, SIGMET, NOTAM
-- **MapLibre + OpenStreetMap** — custom styled map tiles
-- **wttr.in** — plain language airport weather
+- Ads of any kind
+- Dark patterns or manipulative UI
+- Data collection beyond what's documented in the Privacy Policy
+- Noise for the passenger who just needs to know if their gate changed
 
 ---
 
 ## Architecture
+
+Altitude follows clean MVVM with unidirectional data flow throughout.
 
 ```
 altitude/
@@ -90,31 +79,60 @@ altitude/
 │   └── worker/             # Background status polling
 ```
 
+**Key principles:**
+- UI reads from `StateFlow` — never mutates ViewModel state directly
+- MVVM + Hilt throughout — no business logic in Composables
+- Flight history lives entirely on-device — no Altitude cloud, no Altitude servers
+
+---
+
+## Built With
+
+| Layer | Choice |
+|---|---|
+| Language | Kotlin 2.0 |
+| UI | Jetpack Compose |
+| Architecture | MVVM + StateFlow |
+| DI | Hilt |
+| Database | Room |
+| Networking | Retrofit + OkHttp |
+| Maps | MapLibre Android SDK |
+| Widget | Jetpack Glance |
+| Background | WorkManager |
+
+### Data Sources (All Free)
+
+| Service | Purpose |
+|---|---|
+| OpenSky Network | Live aircraft position, heading, altitude, speed |
+| AviationStack | Flight status, schedules, delay information |
+| aviationweather.gov | METAR, TAF, SIGMET, NOTAM |
+| MapLibre + OpenStreetMap | Custom styled map tiles |
+| wttr.in | Plain language airport weather |
+
 ---
 
 ## Getting Started
 
-### Prerequisites
+**Prerequisites:**
 - Android Studio Hedgehog or later
 - JDK 17+
 - Android SDK API 26+
 
-### Setup
+**Clone and run:**
 
-1. Clone the repository
 ```bash
-git clone https://github.com/yourusername/altitude.git
+git clone https://github.com/waleedahmedja/altitude.git
 cd altitude
 ```
 
-2. Create a `local.properties` file in the root directory and add your API keys
+Create a `local.properties` file in the root directory:
+
 ```properties
 AVIATIONSTACK_API_KEY=your_key_here
 ```
 
-3. Open in Android Studio and sync Gradle
-
-4. Run on a device or emulator with API 26+
+Open in Android Studio. Sync Gradle. Run on a device or emulator with API 26+.
 
 > OpenSky Network, aviationweather.gov, and wttr.in require no API keys.
 
@@ -128,7 +146,7 @@ Altitude follows three rules that don't bend.
 
 **Two.** Depth is always available. Every screen has a secondary layer for whoever wants it. We never lock things away — we just don't shout about them.
 
-**Three.** Both light and dark modes are designed from scratch. Not one inverted from the other. They are two separate atmospheres that communicate the same truth.
+**Three.** Both light and dark modes are designed from scratch. Not one inverted from the other. Two separate atmospheres communicating the same truth.
 
 The colour system is deliberate. Red-orange wavelengths preserve night vision — the reason cockpit instruments have glowed this colour since before either of us were born. We use the same colour because this app is built by people who noticed that, and cared.
 
